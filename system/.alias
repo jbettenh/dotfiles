@@ -1,0 +1,17 @@
+#
+
+eap='/srv/jboss/jboss-eap-7.2'
+bel='/standalone/log/gepard/backend-services'
+
+#general folders
+alias cdsrv='cd $eap/standalone/log'
+
+#bt logs
+alias cdbe='cd $eap$bel'
+
+#misc
+alias h="history"
+alias ll="ls -a -l"
+alias lg="ls -a -l | grep"
+alias lt="ls -a -l -t | head -"
+alias x="exit"
