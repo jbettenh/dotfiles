@@ -1,21 +1,51 @@
-#
+## Aliases
 
-# Directory listing/traversal
-eap='/srv/jboss/jboss-eap-7.2'
-bel='/standalone/log/gepard/backend-services'
-
-alias cdsrv='cd $eap/standalone/log'
-alias cdbe='cd $eap$bel'
-
+# Navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-
 # Miscellaneous
 alias h="history"
-alias ll="ls -a -l"
-alias lg="ls -a -l | grep"
-alias lt="ls -a -l -t | head -"
 alias week="date +%V"
 alias x="exit"
+
+# Directory listing/
+alias l="ls -CF"
+alias la="ls -A"
+alias lg="ls -a -l | grep"
+alias ll="ls -alF"
+alias ls="ls -F --color=auto --show-control-chars"
+alias lt="ls -a -l -t | head -"
+
+# Docker
+alias ddev="docker build --target=development -t ignition-docker-development:8.1.32 ."
+alias dpreheat="docker buildx bake --file ./services/docker-bake.hcl production"
+alias dbake="docker buildx bake --file ./services/docker-bake.hcl production --push"
+
+# Docker-compose
+alias dc="docker-compose"
+alias dcpl="dc pull"
+alias dcup="dc pull && dc up -d"
+alias dcdn="dc down"
+
+# Git
+alias gs="git status -sb"
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -m $2"
+alias gcb="git checkout -b $2"
+alias gcd="git checkout develop"
+alias gcm="git checkout main"
+alias gpo="git push origin"
+alias gb="git branch"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gp="git push"
+alias gf="git fetch"
+alias gpl="git pull"
+alias gfa="gaa && git commit --amend --no-edit && gp --force-with-lease"
+
+# Kubectl
+alias k='kubectl' 
+alias kpods='k get pods'
+alias ksvc='k get services'
