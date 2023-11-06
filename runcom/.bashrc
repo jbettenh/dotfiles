@@ -50,3 +50,12 @@ HISTFILESIZE=2000
 # Direnv
 eval "$(direnv hook bash)"
 
+
+# Functions
+sshpod() {
+kubectl exec "$1" --container gateway -n danone-local --stdin --tty -- /bin/bash
+}
+
+kpimg() {
+kubectl get pod --namespace="$1" "$2" -o json | jq '.status.containerStatuses[] | { "image": .image, "imageID": .imageID }'
+}

@@ -19,7 +19,7 @@ alias ls="ls -F --color=auto --show-control-chars"
 alias lt="ls -a -l -t | head -"
 
 # Docker
-alias ddev="docker build --target=development -t ignition-docker-development:8.1.32 ."
+alias ddev="docker build --file ./services/core/frontend/Dockerfile -t ignition-docker-development:8.1.32 ."
 alias dpreheat="docker buildx bake --file ./services/docker-bake.hcl production"
 alias dbake="docker buildx bake --file ./services/docker-bake.hcl production --push"
 
@@ -49,3 +49,7 @@ alias gfa="gaa && git commit --amend --no-edit && gp --force-with-lease"
 alias k='kubectl' 
 alias kpods='k get pods'
 alias ksvc='k get services'
+alias kimg="kubectl get pods --all-namespaces -o jsonpath=\"{.items[*].spec['initContainers', 'containers'][*].image}\" |\
+tr -s '[[:space:]]' '\n' |\
+sort |\
+uniq -c"
